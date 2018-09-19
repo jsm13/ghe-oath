@@ -1,0 +1,23 @@
+{
+  "name": "ghe-oath-test",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "git@git.generalassemb.ly:jsm13/ghe-oath-test.git",
+  "author": "jsm13 <john.s.master@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-github": "^1.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
