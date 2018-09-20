@@ -34,7 +34,7 @@ passport.use(new GitHubStrategy({
 ));
 
 app.get('/login', (req, res) => {
-  console.log(req.ip)
+  console.log(req.ips)
   res.send('<a href="/auth/github">Sign in with GitHub</a>')
 });
 
