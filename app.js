@@ -44,6 +44,6 @@ app.get('/auth/ghe/callback',
 );
 
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
 })
