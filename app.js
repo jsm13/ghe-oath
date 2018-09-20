@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 const passport = require('passport');
 const GitHubStrategy = require('passport-github');
 
+app.set({"trust proxy": true});
 app.use(passport.initialize());
 
 const GHE_BASE_URL = 'https://git.generalassemb.ly';
@@ -33,6 +34,7 @@ passport.use(new GitHubStrategy({
 ));
 
 app.get('/login', (req, res) => {
+  console.log(req.ip)
   res.send('<a href="/auth/github">Sign in with GitHub</a>')
 });
 
