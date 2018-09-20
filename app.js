@@ -19,7 +19,9 @@ const GHE_BASE_URL = 'https://git.generalassemb.ly';
 passport.use(new GitHubStrategy({
   clientID: process.env.GHE_CLIENT_ID,
   clientSecret: process.env.GHE_CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/auth/ghe/callback',
+  callbackURL: ( process.env.NODE_ENV === 'production'
+    ? 'https://obscure-falls-57635.herokuapp.com'
+    : 'http://localhost:3000/auth/ghe/callback' ) + '/auth/ghe/callback',
   userProfileURL: GHE_BASE_URL + '/api/v3/user',
   authorizationURL: GHE_BASE_URL + '/login/oauth/authorize',
   tokenURL: GHE_BASE_URL + '/login/oauth/access_token'
