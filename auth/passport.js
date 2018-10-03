@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GitHubStrategy = require('passport-github');
+const { user } = require('../models').models;
 
 const GHE_BASE_URL = 'https://git.generalassemb.ly';
 
@@ -15,8 +16,16 @@ const options = {
 };
 
 function verify (accessToken, refreshToken, profile, cb) {
-  console.log(profile);
-  cb(undefined, profile);
+  user.findOrCreate({
+    where: {
+      username: profile.username
+    },
+    defaults: {
+      gheId: profile.id
+    }
+  })
+    .spread((user, created) => cb(undefined, user))
+    .catch(cb);
 }
 
 passport.use(new GitHubStrategy(options, verify));
